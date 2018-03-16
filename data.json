@@ -1,0 +1,17 @@
+[
+  {
+    "image_url": "/img/for-you/1.jpg",
+    "content": {
+      "title": "Why should you care about Progressive Web Apps(PWAs)",
+      "body": "Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+      Mollitia perferendis ab laboriosam facilis unde praesentium
+      molestiae error accusamus ea, ullam sint sunt necessitatibus
+      repellat odio, dicta enim minima saepe possimus?"
+    },
+    "author": {
+      "name": "Arfat Salman"
+    },
+    "created": "Feb 21",
+    "read_time": "6 min read"
+  }
+]
