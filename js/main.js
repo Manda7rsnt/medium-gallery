@@ -2,6 +2,15 @@
 
   function Responsive() {
     this.isSmall = false
+    this.subscribers = []
+    this.onLayoutChange = (cb) => {
+      this.subscribers.push(cb)
+    }
+    this.emit = () => {
+      this.subscribers.forEach(s => {
+        s.call()
+      })
+    }
     this.layoutChange = (e) => {
       if (window.innerWidth < 1000 || devicePixelRatio > 2.5) {
         window.document.documentElement.classList.add('sm')
@@ -11,6 +20,7 @@
         window.document.documentElement.classList.remove('sm')        
         this.isSmall = false        
       }
+      this.emit()
     }
 
     this.initEvents()
@@ -66,7 +76,8 @@
 
   Section.prototype.calculateProperties = function() {
     const numberOfColumns = this.$el.querySelectorAll('.grid-column').length
-    this.numberOfPages = Math.ceil(numberOfColumns / this.options.columnPerPage)
+    const columnsPerPage = $responsive.isSmall ? this.options.smallColumnPerPage : this.options.columnPerPage     
+    this.numberOfPages = Math.ceil(numberOfColumns / columnsPerPage)
   }
 
   Section.prototype.defineProperties = function() {
@@ -88,6 +99,11 @@
     })
     this.$nextAction.addEventListener('click', (e) => {
       this.move(e, 'next')
+    })
+
+    $responsive.onLayoutChange(() => {
+      this.calculateProperties()
+      this.updateHeader()
     })
   }
 
@@ -128,12 +144,14 @@
 
   Section.prototype.updateGrid = function() {
     const marginRight = $responsive.isSmall ? this.options.marginSmallRight : this.options.marginRight
-    this.$grid.style.transform = `translateX(-${ (this.offset*1000) + (this.offset*marginRight) }px)`
+    const shiftBy = $responsive.isSmall ? 300 : 1000
+    this.$grid.style.transform = `translateX(-${ (this.offset*shiftBy) + (this.offset*marginRight) }px)`
   }
 
   Section.prototype.updateHeader = function() {
     const isBackDisabled = this.offset === 0
     const isNextDisabled = this.offset === this.numberOfPages - 1
+    console.log("Updating", this.numberOfPages)
 
     isBackDisabled ? this.$backAction.classList.add('disabled') : this.$backAction.classList.remove('disabled')
     isNextDisabled ? this.$nextAction.classList.add('disabled') : this.$nextAction.classList.remove('disabled')

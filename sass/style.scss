@@ -6,6 +6,7 @@ $weight3: 500;
 $weight4: 700;
 
 $contentWidth: 1000px;
+$smallContentWidth: 300px;
 
 *,
 *::after,
@@ -26,7 +27,8 @@ body{
 
 .sm {
   .section {
-    width: 500px;
+    width: 100%;
+    padding: 30px;
   }
 }
 
@@ -89,6 +91,12 @@ body{
   height: 670px;
   overflow: hidden;
   position: relative;
+}
+
+.sm{
+  .grid-wrapper{
+    height: 820px;    
+  }
 }
 
 .grid {
@@ -268,8 +276,27 @@ FOR YOU SECTION
 .sm {
   .for-you {
     .grid-column {
-        width: 500px;
-        margin-right: 0px;
+      width: $smallContentWidth;
+      margin-right: 0px;
+    }
+    .grid--item {
+      height: 400px;
+      flex-direction: column;
+      &.small-item {
+          height: 265px;
+          margin-bottom: 12.5px;
+          
+          &:last-child {
+              margin-bottom: 0px;                
+          }
+          
+          .grid--item-image {
+              flex-basis: 40%;
+          }
+          .grid--item-content {
+              flex-basis: 60%;  
+          }
+      }
     }
   }
 }
@@ -309,7 +336,7 @@ FOR YOU SECTION
 .sm {
   .missed-it {
     .grid-column {
-        width: 500px;
+        width: $smallContentWidth;
         margin-right: 0;
     }
   }
@@ -336,7 +363,7 @@ FOR YOU SECTION
 .sm {
   .latest-technology {
     .grid-column {
-        width: 500px;
+        width: $smallContentWidth;
         margin-right: 0;
     }
   }
