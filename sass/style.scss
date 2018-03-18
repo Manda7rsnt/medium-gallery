@@ -20,6 +20,10 @@ body{
   padding: 4em 0;
 }
 
+.sm body {
+  padding: 2em 0;
+}
+
 .section {
   width: $contentWidth;
   margin: 0 auto;
@@ -27,7 +31,7 @@ body{
 
 .sm {
   .section {
-    width: 100%;
+    width: 360px;
     padding: 30px;
   }
 }
@@ -94,8 +98,15 @@ body{
 }
 
 .sm{
-  .grid-wrapper{
-    height: 820px;    
+  .for-you .grid-wrapper{
+    height: 832px;    
+  }
+
+  .missed-it,
+  .latest-technology {
+    .grid-wrapper {
+      height: 565px;    
+    }
   }
 }
 

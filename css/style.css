@@ -8,12 +8,15 @@ body {
   background-color: #ffffff;
   padding: 4em 0; }
 
+.sm body {
+  padding: 2em 0; }
+
 .section {
   width: 1000px;
   margin: 0 auto; }
 
 .sm .section {
-  width: 100%;
+  width: 360px;
   padding: 30px; }
 
 .section-header {
@@ -63,8 +66,11 @@ body {
   overflow: hidden;
   position: relative; }
 
-.sm .grid-wrapper {
-  height: 820px; }
+.sm .for-you .grid-wrapper {
+  height: 832px; }
+.sm .missed-it .grid-wrapper,
+.sm .latest-technology .grid-wrapper {
+  height: 565px; }
 
 .grid {
   display: -webkit-box;
